@@ -99,7 +99,7 @@ done
 
 # Install packages if they are not already installed
 for i in ${packages[@]}; do
-  if [ ${already_installed[$i]} -eq 1 ]; then
+  if [[ ${already_installed[$i]} -eq 1 ]]; then
     echo "Package already installed: $i"
   else
     brew install $i
