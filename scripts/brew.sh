@@ -91,7 +91,7 @@ installed_flag=0
 
 # Install packages if they are not already installed
 for i in ${packages[@]}; do
-  if [ "${already_installed["$i"]}" -eq 1 ]; then
+  if [[ "${already_installed["$i"]}" -eq 1 ]]; then
     echo "Package already installed: $i"
   else
     brew install "$i"
@@ -100,7 +100,7 @@ for i in ${packages[@]}; do
 done
 
 # Disable "Are you sure you want to open this application?" dialog on installed apps
-[ "$installed_flag" -eq 1 ] && \
+[[ "$installed_flag" -eq 1 ]] && \
   echo "Disabling Gatekeeper quarantine on all installed applications..."; \
   sudo xattr -dr com.apple.quarantine /Applications 2>/dev/null
 
