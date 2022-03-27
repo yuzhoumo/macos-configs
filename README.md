@@ -4,40 +4,40 @@
 
 Run scripts in the following order:
 
-* macos.sh: Set various system settings
-* brew.sh: Install packages using Homebrew
-* icon.sh: Set custom icons for certain apps
-* dock.sh: Set application shortcuts in the Dock
-* post.sh: Set various tweaks after environment is setup
+* `macos.sh`: Set various system settings
+* `brew.sh`: Install packages using Homebrew
+* `icon.sh`: Set custom icons for certain apps
+* `dock.sh`: Set application shortcuts in the Dock
+* `post.sh`: Set various tweaks after environment is setup
 
-Manually configured settings:
+## Manually configured settings
 
 Could not find a way to automate these settings.
 Some existing methods were broken since the Big Sur update.
 
-* System Preferences > Security & Privacy > FileVault: Turn on FileVault
-* System Preferences > Security & Privacy > Privacy: Configure as needed
-* System Preferences > Extensions: Uncheck unecessary extensions
-* System Preferences > General: Set "Recent Items" to "none"
-* System Preferences > Spotlight > Search Results: Check "Applications", "Folders", "Fonts", "PDF Documents", "System Preferences"
-* System Preferences > Accessibility > Display: Check "Reduce Transparency"
-* Menu Bar > Finder > Preferences > Sidebar: Uncheck "iCloud Drive", "Cloud Storage", "Bonjour Computers"
-* Safari > Preferences:
-  - General:
+* `System Preferences > Security & Privacy > FileVault`: Turn on FileVault
+* `System Preferences > Security & Privacy > Privacy`: Configure as needed
+* `System Preferences > Extensions`: Uncheck unecessary extensions
+* `System Preferences > General`: Set "Recent Items" to "none"
+* `System Preferences > Spotlight > Search Results`: Check "Applications", "Folders", "Fonts", "PDF Documents", "System Preferences"
+* `System Preferences > Accessibility > Display`: Check "Reduce Transparency"
+* `Menu Bar > Finder > Preferences > Sidebar`: Uncheck "iCloud Drive", "Cloud Storage", "Bonjour Computers"
+* `Safari > Preferences`:
+  - `General`:
     * Set "Safari opens with" to "Private Window"
-    * Set "Homepage" to "about:blank"
+    * Set "Homepage" to "about`:blank"
     * Set "Remove history items" to "After one day"
     * Uncheck "Open safe files after downloading"
-  - AutoFill: Uncheck everything
-  - Search:
+  - `AutoFill`: Uncheck everything
+  - `Search`:
     * Set "Search engine" to "DuckDuckGo"
     * Uncheck everything
-  - Security: Uncheck "Warn when visiting fraudulent website"
-  - Privacy:
+  - `Security`: Uncheck "Warn when visiting fraudulent website"
+  - `Privacy`:
     * Uncheck "Hide IP address"
     * Uncheck "Allow privacy-preserving measurement of ad effectiveness"
-  - Website: Deny Location and Notifications
-  - Advanced:
-    * Check SHow full website address
+  - `Website`: Deny Location and Notifications
+  - `Advanced`:
+    * Check Show full website address
     * Set "Default encoding" to "Unicode (UTF-8)"
     * Check "Show Develop menu in menu bar"
