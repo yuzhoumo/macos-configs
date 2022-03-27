@@ -14,6 +14,7 @@ packages=(
   # Useful CLI tools
   ack
   ffmpeg
+  gh
   git
   gnupg
   mas
@@ -86,16 +87,16 @@ for i in `brew list`; do
   already_installed["$i"]=1
 done
 
-# Set to 1 if anything needs to be installed
+# Set to 1 if anything is installed
 installed_flag=0
 
 # Install packages if they are not already installed
 for i in ${packages[@]}; do
-  if [[ "${already_installed["$i"]}" -eq 1 ]]; then
-    echo "Package already installed: $i"
-  else
+  if [[ "${already_installed["$i"]}" -ne 1 ]]; then
     brew install "$i"
     installed_flag=1
+  else
+    echo "Package already installed: $i"
   fi
 done
 
