@@ -83,13 +83,26 @@ echo "Installing homebrew packages..."
 # Save an associative array of already-installed packages
 declare -A already_installed
 for i in `brew list`; do
-  already_installed[$i]=1
+  already_installed["$i"]=1
 done
+
+# Set to 1 if anything needs to be installed
+installed_flag=0
 
 # Install packages if they are not already installed
 for i in ${packages[@]}; do
-  [ ${already_installed[$i]} -eq 1 ] && echo "Package already installed: $i" || brew install $i
+  if [ "${already_installed["$i"]}" -eq 1 ]; then
+    echo "Package already installed: $i"
+  else
+    brew install "$i"
+    installed_flag=1
+  fi
 done
+
+# Disable "Are you sure you want to open this application?" dialog on installed apps
+[ "$installed_flag" -eq 1 ] && \
+  echo "Disabling Gatekeeper quarantine on all installed applications..."; \
+  sudo xattr -dr com.apple.quarantine /Applications 2>/dev/null
 
 echo "Removing outdated versions from cellar..."
 brew cleanup
