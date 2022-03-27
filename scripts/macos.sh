@@ -95,11 +95,6 @@ sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on > /dev/
 # Enable stealth mode
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on > /dev/null
 
-# Clear Gatekeeper quaratine log, which stores information about downloaded files (privacy risk)
-# Set this file to be immutable, to prevent further writes
-:>~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2
-sudo chflags schg ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2
-
 # Disable Gatekeeper (offers trivial protection, annoying when trying to run downloaded programs)
 sudo spctl --master-disable
 
