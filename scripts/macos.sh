@@ -196,6 +196,9 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Increase window resize speed for Cocoa applications
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
+# Add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
