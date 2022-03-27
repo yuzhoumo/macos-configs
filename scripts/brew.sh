@@ -33,7 +33,6 @@ packages=(
   android-platform-tools
   balenaetcher
   bitwarden
-  brave-browser
   deluge
   discord
   eloston-chromium

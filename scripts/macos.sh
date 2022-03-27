@@ -17,20 +17,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 cd "$(dirname "$0")"
 
 ###############################################################################
-# Personalization                                                             #
-###############################################################################
-
-# Set desktop wallpaper
-cp ../assets/wallpaper.jpg ${HOME}/Pictures/wallpaper.jpg
-osascript -e "tell application \"Finder\" to set desktop picture to \"${HOME}/Pictures/wallpaper.jpg\" as POSIX file"
-
-# Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "anonymous"
-sudo scutil --set HostName "anonymous"
-sudo scutil --set LocalHostName "anonymous"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "anonymous"
-
-###############################################################################
 # Privacy & Security                                                          #
 ###############################################################################
 
@@ -86,14 +72,17 @@ defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 # Hide Siri in menu bar
 defaults write com.apple.siri StatusMenuVisible -bool false
 
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
 # Enable firewall
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on > /dev/null
 
 # Enable stealth mode
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on > /dev/null
+
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Disable handoff between Mac and nearby iCloud devices
+defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd.plist ActivityAdvertisingAllowed -bool false
 
 # Disable Gatekeeper (offers trivial protection, annoying when trying to run downloaded programs)
 sudo spctl --master-disable
@@ -168,8 +157,14 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 20
 defaults write NSGlobalDomain KeyRepeat -int 1
 
 ###############################################################################
-# General UI/UX                                                               #
+# General Tweaks                                                              #
 ###############################################################################
+
+# Set computer name (as done via System Preferences → Sharing)
+sudo scutil --set ComputerName "anonymous"
+sudo scutil --set HostName "anonymous"
+sudo scutil --set LocalHostName "anonymous"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "anonymous"
 
 # Show battery percentage in menu bar
 defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool true
