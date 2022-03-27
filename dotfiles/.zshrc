@@ -1,24 +1,32 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 ###############################################################################
 # Exports                                                                     #
 ###############################################################################
 
 # Make neovim the default editor
-export EDITOR='nvim';
+export EDITOR='nvim'
 
 # Omit duplicates and commands that begin with a space from history
-export HISTCONTROL='ignoreboth';
+export HISTCONTROL='ignoreboth'
 
 # Prefer US English and use UTF-8
-export LANG='en_US.UTF-8';
-export LC_ALL='en_US.UTF-8';
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
 
 # Highlight section titles in manual pages
-export LESS_TERMCAP_md="${yellow}";
+export LESS_TERMCAP_md="${yellow}"
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr
-export PYTHONIOENCODING='UTF-8';
+export PYTHONIOENCODING='UTF-8'
+
+# Homebrew security and privacy settings
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
+
+# Add GNU coreutils bin to path
+export PATH=$(brew --prefix coreutils)/libexec/gnubin
 
 ###############################################################################
 # Re-Bindings and Shortcuts                                                   #
