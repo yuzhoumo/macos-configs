@@ -1,21 +1,15 @@
 #!/usr/bin/env zsh
+# Installation script for Homebrew packages
+# by Yuzhou (Joe) Mo <joe.mo@berkeley.edu>
+# License: GNU GPLv3
 
 packages=(
   # Updated versions of outdated macOS tools
   coreutils
-  findutils
-  gawk
-  gnu-getopt
-  gnu-indent
-  gnu-sed  
-  gnu-tar
-  gnutls
   grep
   vim
   openssh
-  screen
   php
-  gmp
 
   # Useful CLI tools
   ack
@@ -85,10 +79,6 @@ brew analytics off
 echo "Upgrading any already-installed formulae..."
 brew upgrade
 
-# Tap cask
-brew tap homebrew/cask
-brew tap homebrew/cask-versions
-
 echo "Installing homebrew packages..."
 
 # Save an associative array of already-installed packages
@@ -99,11 +89,7 @@ done
 
 # Install packages if they are not already installed
 for i in ${packages[@]}; do
-  if [[ ${already_installed[$i]} -eq 1 ]]; then
-    echo "Package already installed: $i"
-  else
-    brew install $i
-  fi
+  [ ${already_installed[$i]} -eq 1 ] && echo "Package already installed: $i" || brew install $i
 done
 
 echo "Removing outdated versions from cellar..."
