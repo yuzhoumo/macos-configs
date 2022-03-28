@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # Installation script for Homebrew packages
-# by Yuzhou (Joe) Mo <joe.mo@berkeley.edu>
+# Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
 packages=(

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # Additional configs for macOS after package installation
-# by Yuzhou (Joe) Mo <joe.mo@berkeley.edu>
+# Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
 # Close any open System Preferences panes, to prevent them from overriding

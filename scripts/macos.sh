@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # Configuration script for macOS (Tested on Monterey 12.3)
-# by Yuzhou (Joe) Mo <joe.mo@berkeley.edu>
+# Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
 # Close any open System Preferences panes, to prevent them from overriding

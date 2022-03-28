@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # Set application icons to match Big Sur style
-# by Yuzhou (Joe) Mo <joe.mo@berkeley.edu>
+# Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
 apps=(

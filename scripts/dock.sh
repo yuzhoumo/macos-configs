@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # Setup script for application shortcuts in macOS Dock
-# by Yuzhou (Joe) Mo <joe.mo@berkeley.edu>
+# Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
 apps=(
