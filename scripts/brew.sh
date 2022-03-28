@@ -57,6 +57,7 @@ packages=(
   slack
   spotify
   standard-notes
+  synology-drive
   thunderbird
   tor-browser
   visual-studio-code
@@ -76,6 +77,9 @@ command -v brew >/dev/null 2>&1 || /bin/bash -c \
 
 # Turn off analytics
 brew analytics off
+
+# Tap drivers cask (needed for synology-drive)
+brew tap homebrew/cask-drivers
 
 echo "Upgrading any already-installed formulae..."
 brew upgrade
