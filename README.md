@@ -19,44 +19,49 @@ Some existing methods were broken since the Big Sur update.
 * `System Preferences > Security & Privacy > Privacy`: Configure as needed
 * `System Preferences > Extensions`: Uncheck unecessary extensions
 * `System Preferences > General`: Set "Recent Items" to "none"
-* `System Preferences > Spotlight > Search Results`: Check "Applications", "Folders", "Fonts", "PDF Documents", "System Preferences"
+* `System Preferences > Spotlight > Search Results`: Check "Applications", 
+"Folders", "Fonts", "PDF Documents", "System Preferences"
 * `System Preferences > Accessibility > Display`: Check "Reduce Transparency"
-* `Menu Bar > Finder > Preferences > Sidebar`: Uncheck "iCloud Drive", "Cloud Storage", "Bonjour Computers"
+* `Menu Bar > Finder > Preferences > Sidebar`: Uncheck "iCloud Drive", 
+"Cloud Storage", "Bonjour Computers"
 
 ## Web browser configurations
-* `Firefox`:
-  - Import user.js config from `assets/files`
-  - Set default search engine
-  - Log in to Firefox account and sync
-* `Chromium`:
-  - Add extension support:
-    * https://github.com/NeverDecaf/chromium-web-store
-    * Install: uBlock Origin, DuckDuckGo Essentials, Return YouTube Dislike
-  - `Sync and Google services`: Uncheck "Autocomplete searches and URLs"
-  - `Autofill`: Uncheck everything
-  - `Security and Privacy`:
-    * Security: Check "Always use secure connections"
-    * Cookies and other site data: 
-      - Check "Block third-party cookies"
-      - Check "Clear cookies and site data when you close all windows"
-  - `Appearance`: Check "Show bookmarks bar"
-  - `On startup`: Check "Open the New Tab Page"
-* `Safari > Preferences`:
-  - `General`:
-    * Set "Safari opens with" to "Private Window"
-    * Set "Homepage" to "about`:blank"
-    * Set "Remove history items" to "After one day"
-    * Uncheck "Open safe files after downloading"
-  - `AutoFill`: Uncheck everything
-  - `Search`:
-    * Set "Search engine" to "DuckDuckGo"
-    * Uncheck everything
-  - `Security`: Uncheck "Warn when visiting fraudulent website"
-  - `Privacy`:
-    * Uncheck "Hide IP address"
-    * Uncheck "Allow privacy-preserving measurement of ad effectiveness"
-  - `Website`: Deny Location and Notifications
-  - `Advanced`:
-    * Check Show full website address
-    * Set "Default encoding" to "Unicode (UTF-8)"
-    * Check "Show Develop menu in menu bar"
+
+**Firefox**
+- Import user.js config from `assets/files`
+- Sync with Firefox account
+- Set default search engine and configure toolbar
+
+**Chromium**
+- Add extension support:
+  * https://github.com/NeverDecaf/chromium-web-store
+  * Install: uBlock Origin, DuckDuckGo Essentials, Return YouTube Dislike
+- `Sync and Google services`: Uncheck "Autocomplete searches and URLs"
+- `Autofill`: Uncheck everything
+- `Security and Privacy`:
+  * Security: Check "Always use secure connections"
+  * Cookies and other site data: 
+    - Check "Block third-party cookies"
+    - Check "Clear cookies and site data when you close all windows"
+- `Appearance`: Check "Show bookmarks bar"
+- `On startup`: Check "Open the New Tab Page"
+
+**Safari**
+- `General`:
+  * Set "Safari opens with" to "Private Window"
+  * Set "Homepage" to "about`:blank"
+  * Set "Remove history items" to "After one day"
+  * Uncheck "Open safe files after downloading"
+- `AutoFill`: Uncheck everything
+- `Search`:
+  * Set "Search engine" to "DuckDuckGo"
+  * Uncheck everything
+- `Security`: Uncheck "Warn when visiting fraudulent website"
+- `Privacy`:
+  * Uncheck "Hide IP address"
+  * Uncheck "Allow privacy-preserving measurement of ad effectiveness"
+- `Website`: Deny Location and Notifications
+- `Advanced`:
+  * Check Show full website address
+  * Set "Default encoding" to "Unicode (UTF-8)"
+  * Check "Show Develop menu in menu bar"
