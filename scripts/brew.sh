@@ -71,7 +71,8 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Check to see if Homebrew is installed, and install it if it is not
-command -v brew >/dev/null 2>&1 || (echo "Installing homebrew..." && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+command -v brew >/dev/null 2>&1 || /bin/bash -c \
+  "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Turn off analytics
 brew analytics off
@@ -100,7 +101,7 @@ for i in ${packages[@]}; do
   fi
 done
 
-# Disable "Are you sure you want to open this application?" dialog on installed apps
+# Disable "Are you sure you want to open..." dialog on installed apps
 [[ "$installed_flag" -eq 1 ]] && \
   echo "Disabling Gatekeeper quarantine on all installed applications..."; \
   sudo xattr -dr com.apple.quarantine /Applications 2>/dev/null

@@ -24,11 +24,13 @@ icon_dir="../assets/icons"
 for app_name in "${apps[@]}"; do
   echo "Setting app icon: $app_name"
 
-  # Fetch the name of the icon file to replace and add .icns extension if it does not have one
-  icon_name=`defaults read "/Applications/${app_name}.app/Contents/Info" CFBundleIconFile`
-  [ ${icon_name: -5} != ".icns" ] && icon_name+=".icns"
-  
+  # Get name of icon to replace and add .icns extension if it does not have one
+  app_info="/Applications/${app_name}.app/Contents/Info"
+  icon_name=$( defaults read "${app_info}" CFBundleIconFile )
+  [[ ${icon_name: -5} != ".icns" ]] && icon_name+=".icns"
+
   # Overwrite with preferred icon, and touch file to update icon db
-  cp "${icon_dir}/${app_name}.icns" "/Applications/${app_name}.app/Contents/Resources/${icon_name}" && \
+  cp "${icon_dir}/${app_name}.icns" \
+    "/Applications/${app_name}.app/Contents/Resources/${icon_name}" && \
     touch "/Applications/${app_name}.app"
 done

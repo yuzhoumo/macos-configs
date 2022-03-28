@@ -73,18 +73,22 @@ defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 defaults write com.apple.siri StatusMenuVisible -bool false
 
 # Enable firewall
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on > /dev/null
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw \
+  --setglobalstate on > /dev/null
 
 # Enable stealth mode
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on > /dev/null
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw \
+  --setstealthmode on > /dev/null
 
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Disable handoff between Mac and nearby iCloud devices
-defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd.plist ActivityAdvertisingAllowed -bool false
+defaults write \
+  ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd.plist \
+  ActivityAdvertisingAllowed -bool false
 
-# Disable Gatekeeper (offers trivial protection, annoying when trying to run downloaded programs)
+# Disable Gatekeeper (annoying when trying to run downloaded programs)
 sudo spctl --master-disable
 
 ###############################################################################
@@ -115,21 +119,30 @@ sudo pmset -a hibernatemode 0
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Enable tap to click for this user and for the login screen
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write \
+  com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Enable trackpad three finger drag
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
-defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerDragGesture -bool true
-defaults write NSGlobalDomain com.apple.trackpad.threeFingerDragGesture -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad \
+  TrackpadThreeFingerDrag -bool true
+defaults write com.apple.AppleMultitouchTrackpad \
+  TrackpadThreeFingerDrag -bool true
+defaults -currentHost write NSGlobalDomain \
+  com.apple.trackpad.threeFingerDragGesture -bool true
+defaults write NSGlobalDomain \
+  com.apple.trackpad.threeFingerDragGesture -bool true
 
 # Disable lookup & data detectors (three finger tap)
-defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -bool false
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -bool false
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerTapGesture -bool false
-defaults write NSGlobalDomain com.apple.trackpad.threeFingerTapGesture -bool false
+defaults write com.apple.AppleMultitouchTrackpad \
+  TrackpadThreeFingerTapGesture -bool false
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad \
+  TrackpadThreeFingerTapGesture -bool false
+defaults -currentHost write NSGlobalDomain \
+  com.apple.trackpad.threeFingerTapGesture -bool false
+defaults write NSGlobalDomain \
+  com.apple.trackpad.threeFingerTapGesture -bool false
 
 # Disable "natural" (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
@@ -164,13 +177,16 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 sudo scutil --set ComputerName "anonymous"
 sudo scutil --set HostName "anonymous"
 sudo scutil --set LocalHostName "anonymous"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "anonymous"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server \
+  NetBIOSName -string "anonymous"
 
 # Show battery percentage in menu bar
-defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool true
+defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist \
+  BatteryShowPercentage -bool true
 
 # Show Bluetooth icon in menu bar
-defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Bluetooth -int 2
+defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist \
+  Bluetooth -int 2
 
 # Jump to the spot that's clicked in scroll bar
 defaults write NSGlobalDomain AppleScrollerPagingBehavior -int 1
@@ -245,32 +261,64 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
 # Show item info near icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :StandardViewSettings:IconViewSettings:showItemInfo true" \
+  ~/Library/Preferences/com.apple.finder.plist
 
 # Show item info to the bottom of the icons on the desktop
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom true" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set DesktopViewSettings:IconViewSettings:labelOnBottom true" \
+  ~/Library/Preferences/com.apple.finder.plist
 
 # Set item text size to 10 on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set DesktopViewSettings:IconViewSettings:textSize 10" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :FK_StandardViewSettings:IconViewSettings:textSize 10" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :StandardViewSettings:IconViewSettings:textSize 10" \
+  ~/Library/Preferences/com.apple.finder.plist
 
 # Enable snap-to-grid for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" \
+  ~/Library/Preferences/com.apple.finder.plist
 
 # Set grid spacing for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 1" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 1" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 1" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :DesktopViewSettings:IconViewSettings:gridSpacing 1" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 1" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :StandardViewSettings:IconViewSettings:gridSpacing 1" \
+  ~/Library/Preferences/com.apple.finder.plist
 
 # Set the size of icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :DesktopViewSettings:IconViewSettings:iconSize 64" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :FK_StandardViewSettings:IconViewSettings:iconSize 64" \
+  ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c \
+  "Set :StandardViewSettings:IconViewSettings:iconSize 64" \
+  ~/Library/Preferences/com.apple.finder.plist
 
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
@@ -328,13 +376,16 @@ defaults write com.apple.ActivityMonitor IconType -int 5
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
 # Messages: Disable automatic emoji substitution (i.e. use plain text smileys)
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings \
+  -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
 # Messages: Disable smart quotes as it’s annoying for messages that contain code
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings \
+  -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 # Messages: Disable continuous spell checking
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings \
+  -dict-add "continuousSpellCheckingEnabled" -bool false
 
 # Photos: Prevent from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
@@ -376,4 +427,4 @@ for app in "Activity Monitor" \
   "iCal"; do
   killall "${app}" &> /dev/null
 done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+echo "Done. Note that some of these changes require a restart to take effect."
