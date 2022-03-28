@@ -1,6 +1,6 @@
 # Configurations
 
-## MacOS Configuration
+## macOS configuration scripts
 
 Run scripts in the following order:
 
@@ -22,6 +22,25 @@ Some existing methods were broken since the Big Sur update.
 * `System Preferences > Spotlight > Search Results`: Check "Applications", "Folders", "Fonts", "PDF Documents", "System Preferences"
 * `System Preferences > Accessibility > Display`: Check "Reduce Transparency"
 * `Menu Bar > Finder > Preferences > Sidebar`: Uncheck "iCloud Drive", "Cloud Storage", "Bonjour Computers"
+
+## Web browser configurations
+* `Firefox`:
+  - Import user.js config from `assets/files`
+  - Set default search engine
+  - Log in to Firefox account and sync
+* `Chromium`:
+  - Add extension support:
+    * https://github.com/NeverDecaf/chromium-web-store
+    * Install: uBlock Origin, DuckDuckGo Essentials, Return YouTube Dislike
+  - `Sync and Google services`: Uncheck "Autocomplete searches and URLs"
+  - `Autofill`: Uncheck everything
+  - `Security and Privacy`:
+    * Security: Check "Always use secure connections"
+    * Cookies and other site data: 
+      - Check "Block third-party cookies"
+      - Check "Clear cookies and site data when you close all windows"
+  - `Appearance`: Check "Show bookmarks bar"
+  - `On startup`: Check "Open the New Tab Page"
 * `Safari > Preferences`:
   - `General`:
     * Set "Safari opens with" to "Private Window"
