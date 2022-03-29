@@ -15,10 +15,20 @@ apps=(
   "ProtonMail Bridge"
   "ProtonVPN"
   "Spotify"
+  "Synology Drive Client"
   "Tor Browser"
   "VLC"
   "zoom.us"
 )
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `macos.sh` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Navigate to current directory
+cd "$(dirname "$0")"
 
 icon_dir="../assets/icons"
 for app_name in "${apps[@]}"; do
@@ -30,7 +40,7 @@ for app_name in "${apps[@]}"; do
   [[ ${icon_name: -5} != ".icns" ]] && icon_name+=".icns"
 
   # Overwrite with preferred icon, and touch file to update icon db
-  cp "${icon_dir}/${app_name}.icns" \
+  sudo cp "${icon_dir}/${app_name}.icns" \
     "/Applications/${app_name}.app/Contents/Resources/${icon_name}" && \
-    touch "/Applications/${app_name}.app"
+    sudo touch "/Applications/${app_name}.app"
 done
