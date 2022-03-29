@@ -32,7 +32,6 @@ packages=(
 
   # Casks
   android-platform-tools
-  balenaetcher
   bitwarden
   deluge
   discord
@@ -42,7 +41,6 @@ packages=(
   flux
   imageoptim
   insomnia
-  keepassxc
   keka
   kitty
   ledger-live
