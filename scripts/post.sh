@@ -30,11 +30,18 @@ osascript -e "tell application \"Finder\" to set desktop picture to \
 # https://apple.stackexchange.com/questions/117530#367667
 echo 'Setting user profile picture...'
 cp ../assets/images/profile.png "${HOME}/Pictures/profile.png"
-printf "%s %s \n%s:%s" "0x0A 0x5C 0x3A 0x2C" \
-  "dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName" \
-  "externalbinary:dsAttrTypeStandard:JPEGPhoto" \
-  "${USERNAME}" "${HOME}/Pictures/profile.png" > dsimport.tmp 
-sudo /usr/bin/dsimport dsimport.tmp /Local/Default M; rm dsimport.tmp
+
+# Delete old profile picture
+dscl . delete "${HOME}" JPEGPhoto && dscl . delete "${HOME}" Picture
+
+attrs="dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName externalbinary:"
+attrs+="dsAttrTypeStandard:JPEGPhoto"
+mappings="0x0A 0x5C 0x3A 0x2C"
+tmpfile="dsimport.tmp"
+
+printf "%s %s \n%s:%s" "${mappings}" "${attrs}" "${USERNAME}" \
+  "${HOME}/Pictures/profile.png" > "${tmpfile}"
+sudo /usr/bin/dsimport "${tmpfile}" /Local/Default M; rm "${tmpfile}"
 
 # Set default browser to Firefox
 echo 'Setting default browser...\n'
