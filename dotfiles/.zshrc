@@ -26,7 +26,7 @@ export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
 
 # Add GNU coreutils bin to path
-export PATH=$(brew --prefix coreutils)/libexec/gnubin
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 
 ###############################################################################
 # Re-Bindings and Shortcuts                                                   #
