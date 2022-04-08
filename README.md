@@ -1,6 +1,11 @@
-# Configurations
+# macOS Configurations
 
-## macOS configuration scripts
+The goal of this project is to configure a fresh install of macOS as fast as
+possible. Manual setup steps are listed in this readme for tasks that can not
+be automated. My dotfiles are pulled from a separate repository hosted at
+`github.com/yuzhoumo/dotfiles`.
+
+## Scripts
 
 Run scripts in the following order:
 
@@ -30,7 +35,7 @@ Some existing methods were broken since the Big Sur update.
 **Firefox**
 - Import user.js config from `assets/files`
 - Sync with Firefox account
-- Set default search engine and configure toolbar
+- Set default search engine, set device name, and configure toolbar
 
 **Chromium**
 - Add extension support:
