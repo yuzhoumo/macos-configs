@@ -3,34 +3,27 @@
 # Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
-packages=(
-  # Updated versions of outdated macOS tools
+cli=(
   coreutils
-  grep
-  vim
   openssh
-  php
-
-  # Useful CLI tools
-  ack
   ffmpeg
   gh
   git
   gnupg
-  mas
+  htop
   neovim
   nvm
   openjdk
   p7zip
   pigz
-  postgresql
   tmux
   tree
   wget
   youtube-dl
   zopfli
+)
 
-  # Casks
+casks=(
   android-platform-tools
   bitwarden
   deluge
@@ -46,8 +39,6 @@ packages=(
   ledger-live
   libreoffice
   lulu
-  mactex
-  miniconda
   obsidian
   protonmail-bridge
   protonvpn
@@ -63,50 +54,106 @@ packages=(
   zoom
 )
 
+pueue_group="brew_install"
+
+set -e # Exit if any command fails
+
+# Cleanup function
+finish() {
+  printf "Exiting...\n"
+  pueue >/dev/null 2>&1
+  if [[ $? -eq 0 ]]; then
+    pueue reset
+    pueue group | grep "${pueue_group}" > /dev/null &&
+      pueue group remove "${pueue_group}"
+  fi
+}
+trap finish EXIT
+
+# Trigger exit on interrupt
+ctrlc() {
+  exit
+}
+trap ctrlc INT
+
 # Ask for the administrator password upfront
-sudo -v
+sudo --validate
 
 # Keep-alive: update existing `sudo` time stamp until `brew.sh` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do sudo --non-interactive true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Check to see if Homebrew is installed, and install it if it is not
 command -v brew >/dev/null 2>&1 || /bin/bash -c \
   "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Turn off analytics
+# Pre-install tasks
 brew analytics off
-
-# Tap drivers cask (needed for synology-drive)
-brew tap homebrew/cask-drivers
-
-echo "Upgrading any already-installed formulae..."
+printf "Tapping homebrew/cask-drivers...\n"
+brew tap homebrew/cask-drivers # Needed for synology-drive
+printf "Upgrading any already-installed formulae...\n"
 brew upgrade
 
-echo "Installing homebrew packages..."
+# Install pueue if not already installed
+command -v pueue >/dev/null 2>&1 || brew install pueue || exit
 
-# Save an associative array of already-installed packages
-declare -A already_installed
-for i in `brew list`; do
-  already_installed["$i"]=1
-done
+# Start pueue in background if it isn't already running
+pueue >/dev/null 2>&1 || pueued --daemonize
 
-# Set to 1 if anything is installed
-installed_flag=0
+# Save set of already-installed packages
+declare -A already_installed && \
+  for i in $(brew list); do already_installed["$i"]=1; done
 
-# Install packages if they are not already installed
-for i in ${packages[@]}; do
-  if [[ "${already_installed["$i"]}" -ne 1 ]]; then
-    brew install "$i"
-    installed_flag=1
+# Set to 1 if any cask/cli package needs to be installed
+cli_flag=0; cask_flag=0
+
+# Setup pueue group for install tasks
+pueue group add "${pueue_group}"
+
+# Parallelize 4 processes at once
+pueue parallel 4 --group "${pueue_group}"
+
+printf "Installing casks...\n"
+
+# Install casks in parallel
+for app_name in "${casks[@]}"; do
+  if [[ "${already_installed["$app_name"]}" -ne 1 ]]; then
+    pueue add -g "${pueue_group}" "brew install --cask $app_name"
+    cask_flag=1
   else
-    echo "Package already installed: $i"
+    printf "Package already installed: %s\n" "${app_name}"
   fi
 done
 
-# Disable "Are you sure you want to open..." dialog on installed apps
-[[ "$installed_flag" -eq 1 ]] && \
-  echo "Disabling Gatekeeper quarantine on all installed applications..."; \
+printf "Fetching cli packages...\n"
+
+# Fetch cli packages in parallel (defer install to happen serially)
+for app_name in "${cli[@]}"; do
+  if [[ "${already_installed["$app_name"]}" -ne 1 ]]; then
+    pueue add -g "${pueue_group}" "brew fetch $app_name"
+    cli_flag=1
+  else
+    printf "Package already installed: %s\n" "${app_name}"
+  fi
+done
+
+# Wait on pueue group if anything was fetched/installed
+if [[ "$cli_flag" -eq 1 || "$cask_flag" -eq 1 ]]; then
+  sleep 3 && pueue status
+  pueue wait -g "${pueue_group}"
+fi
+
+printf "Installing cli packages...\n"
+
+# Install cli packages serially (prevent conflicting dependencies)
+for app_name in "${cli[@]}"; do
+  [[ "${already_installed["$app_name"]}" -ne 1 ]] && \
+    brew install "${app_name}"
+done
+
+# Disable "Are you sure you want to open..." dialog on installed casks
+[[ "$cask_flag" -eq 1 ]] && \
+  printf "Disabling Gatekeeper quarantine on all installed applications...\n"; \
   sudo xattr -dr com.apple.quarantine /Applications 2>/dev/null
 
-echo "Removing outdated versions from cellar..."
+printf "Cleanup brew...\n"
 brew cleanup
