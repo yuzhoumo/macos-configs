@@ -14,7 +14,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Navigate to current directory
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit
 
 ###############################################################################
 # Personalization                                                             #
@@ -22,7 +22,7 @@ cd "$(dirname "$0")"
 
 # Set desktop wallpaper
 echo 'Setting desktop wallpaper...'
-cp ../assets/images/wallpaper.jpg ${HOME}/Pictures/wallpaper.jpg
+cp ../assets/images/wallpaper.jpg "${HOME}"/Pictures/wallpaper.jpg
 osascript -e "tell application \"Finder\" to set desktop picture to \
   \"${HOME}/Pictures/wallpaper.jpg\" as POSIX file"
 
@@ -44,19 +44,19 @@ printf "%s %s \n%s:%s" "${mappings}" "${attrs}" "${USERNAME}" \
 sudo /usr/bin/dsimport "${tmpfile}" /Local/Default M; rm "${tmpfile}"
 
 # Set default browser to Firefox
-echo 'Setting default browser...\n'
+echo 'Setting default browser...'
 brew install defaultbrowser
 defaultbrowser firefox
 brew uninstall defaultbrowser 
 
 # Set Finder favorites
-echo '\nSetting favorites in Finder sidebar...\n'
+echo 'Setting favorites in Finder sidebar...'
 brew install mysides
 mysides remove Recents > /dev/null
 mysides remove Documents > /dev/null
-mysides add home file://$HOME > /dev/null
-mysides add Desktop file://$HOME/Desktop > /dev/null
-mysides add Downloads file://$HOME/Downloads > /dev/null
+mysides add home file://"${HOME}" > /dev/null
+mysides add Desktop file://"${HOME}"/Desktop > /dev/null
+mysides add Downloads file://"${HOME}"/Downloads > /dev/null
 mysides add Applications file:///Applications > /dev/null
 mysides add AirDrop nwnode://domain-AirDrop > /dev/null
 brew uninstall mysides

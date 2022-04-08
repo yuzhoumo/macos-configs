@@ -28,7 +28,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Navigate to current directory
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit
 
 icon_dir="../assets/icons"
 for app_name in "${apps[@]}"; do

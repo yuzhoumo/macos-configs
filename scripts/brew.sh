@@ -61,8 +61,8 @@ set -e # Exit if any command fails
 # Cleanup function
 finish() {
   printf "Exiting...\n"
-  pueue >/dev/null 2>&1
-  if [[ $? -eq 0 ]]; then
+
+  if pueue >/dev/null 2>&1; then
     pueue reset
     pueue group | grep "${pueue_group}" > /dev/null &&
       pueue group remove "${pueue_group}"
