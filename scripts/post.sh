@@ -8,27 +8,27 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
-sudo -v
+sudo --validate
 
 # Keep-alive: update existing `sudo` time stamp until `macos.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Navigate to current directory
-cd "$(dirname "$0")" || exit
+cd "$(dirname "${0}")" || exit
 
 ###############################################################################
 # Personalization                                                             #
 ###############################################################################
 
 # Set desktop wallpaper
-echo 'Setting desktop wallpaper...'
+printf 'Setting desktop wallpaper...\n'
 cp ../assets/images/wallpaper.jpg "${HOME}"/Pictures/wallpaper.jpg
 osascript -e "tell application \"Finder\" to set desktop picture to \
   \"${HOME}/Pictures/wallpaper.jpg\" as POSIX file"
 
 # Set profile picture
 # https://apple.stackexchange.com/questions/117530#367667
-echo 'Setting user profile picture...'
+printf 'Setting user profile picture...\n'
 cp ../assets/images/profile.png "${HOME}/Pictures/profile.png"
 
 # Delete old profile picture
@@ -44,13 +44,13 @@ printf "%s %s \n%s:%s" "${mappings}" "${attrs}" "${USERNAME}" \
 sudo /usr/bin/dsimport "${tmpfile}" /Local/Default M; rm "${tmpfile}"
 
 # Set default browser to Firefox
-echo 'Setting default browser...'
+printf 'Setting default browser...\n'
 brew install defaultbrowser
 defaultbrowser firefox
 brew uninstall defaultbrowser 
 
 # Set Finder favorites
-echo 'Setting favorites in Finder sidebar...'
+printf 'Setting favorites in Finder sidebar...\n'
 brew install mysides
 mysides remove Recents > /dev/null
 mysides remove Documents > /dev/null

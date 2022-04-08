@@ -20,10 +20,10 @@ apps=(
   "Calendar"
 )
 
-echo "Parsing launchservices dump for application paths..."
+printf "Parsing launchservices dump for application paths...\n"
 launchservices_path="/System/Library/Frameworks/CoreServices.framework"
-launchservices_path+="/Versions/A/Frameworks/LaunchServices.framework/"
-launchservices_path+="Versions/A/Support/lsregister"
+launchservices_path+="/Versions/A/Frameworks/LaunchServices.framework"
+launchservices_path+="/Versions/A/Support/lsregister"
 path_dump=$( "${launchservices_path}" -dump | grep -o "/.*\.app" | \
   grep -v -E "Backups|Caches|TimeMachine|Temporary|/Volumes/" | uniq | sort )
 
@@ -32,7 +32,7 @@ defaults write com.apple.dock persistent-apps -array
 
 for app_name in "${apps[@]}"; do 
   # Adds an application to macOS Dock
-  app_path=$(echo "${path_dump}" | grep "${app_name}.app" | head -n1)
+  app_path=$(printf "${path_dump}" | grep "${app_name}.app" | head -n1)
 
   if open -Ra "${app_path}"; then
     defaults write com.apple.dock persistent-apps -array-add \
@@ -48,9 +48,9 @@ for app_name in "${apps[@]}"; do
         </dict>
       </dict>
     </dict>"
-    echo "Added to dock: ${app_name}"
+    printf "Added to dock: %s\n" "${app_name}"
   else
-    echo "ERROR: ${app_name} not found." 1>&2
+    printf "ERROR: %s not found.\n" "${app_name}" 1>&2
   fi
 done
 

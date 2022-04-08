@@ -8,10 +8,12 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
-sudo -v
+sudo --validate
 
 # Keep-alive: update existing `sudo` time stamp until `macos.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+printf "Configuring system settings...\n"
 
 ###############################################################################
 # Privacy & Security                                                          #
@@ -424,4 +426,4 @@ for app in "Activity Monitor" \
   "iCal"; do
   killall "${app}" &> /dev/null
 done
-echo "Done. Note that some of these changes require a restart to take effect."
+printf "Done. Some of these changes require a restart to take effect.\n"
