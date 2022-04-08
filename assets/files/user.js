@@ -1,10 +1,8 @@
 /*
- * User settings for Firefox
+ * Joe's Firefox user settings
  *
- * Open profile directory - find in about:profiles
- * Copy this file into profile directory
+ * Copy this file into profile directory (find in about:profiles)
  * Restart Firefox. Below overrides will be loaded.
- * NOTE: only non-default values will be saved to prefs.js
  */
 
 /*********/
@@ -243,7 +241,7 @@ user_pref("privacy.cpd.cookies", false);
 
 /* Mitigate tracking through TLS session ids
  * https://www.reddit.com/r/firefox/comments/9eb9o2/firefox_has_the_privacy_option_to_mitigate_tls */
- user_pref("security.ssl.disable_session_identifiers", true);
+user_pref("security.ssl.disable_session_identifiers", true);
 
 /* Disallow reading battery status (reduce fingerprinting) */
 user_pref("dom.battery.enabled", false);
