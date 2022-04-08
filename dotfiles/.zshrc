@@ -20,20 +20,15 @@ export LESS_TERMCAP_md="${yellow}"
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr
 export PYTHONIOENCODING='UTF-8'
 
-# Homebrew security and privacy settings
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_INSECURE_REDIRECT=1
-export HOMEBREW_CASK_OPTS=--require-sha
-
-# Add GNU coreutils bin to path
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
-
 ###############################################################################
 # Re-Bindings and Shortcuts                                                   #
 ###############################################################################
 
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
+
+# Remap vim to nvim
+alias vim="nvim "
 
 # Prompt user by default
 alias mv="mv -i"
@@ -152,9 +147,14 @@ if [ $(uname -s) = 'Darwin' ]; then
   # Shortcuts
   alias desk="cd ~/Desktop"
 
+  # Homebrew security and privacy settings
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_INSECURE_REDIRECT=1
+  export HOMEBREW_CASK_OPTS=--require-sha
+
   # Use updated coreutils from brew
-  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-  export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+  export PATH="$(brew --prefix coreutils)/libexec/gnubin:${PATH}"
+  export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:${MANPATH}"
 
   # Avoid issues with `gpg` as installed via Homebrew.
   # https://stackoverflow.com/a/42265848/96656
