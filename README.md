@@ -1,9 +1,9 @@
 # macOS Configurations
 
 The goal of this project is to configure a fresh install of macOS as fast as
-possible. Manual setup steps are listed in this readme for tasks that can not
-be automated. My dotfiles are pulled from a separate repository hosted at
-`github.com/yuzhoumo/dotfiles`.
+possible. Manual setup steps for tasks that cannot be automated are listed
+in this README. My dotfiles are pulled from a separate repository hosted
+[here](https://github.com/yuzhoumo/dotfiles).
 
 ## Scripts
 
