@@ -3,6 +3,20 @@
 # Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
+# Cleanup function
+finish() {
+  command -v mysides >/dev/null 2>&1 && brew uninstall mysides
+  command -v defaultbrowser >/dev/null 2>&1 && brew uninstall defaultbrowser
+}
+trap finish EXIT
+
+# Trigger exit on interrupt
+ctrlc() {
+  printf "Exiting...\n"
+  exit
+}
+trap ctrlc INT
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -61,12 +75,32 @@ mysides add Applications file:///Applications > /dev/null
 mysides add AirDrop nwnode://domain-AirDrop > /dev/null
 brew uninstall mysides
 
+# Copy Firefox user.js to all default profiles
+printf "Setting user.js file for default Firefox profiles...\n"
+profiles_dir="${HOME}/Library/Application Support/Firefox/Profiles" 
+for profile in $(ls "${profiles_dir}" | grep default); do
+  cp ../assets/files/user.js "${profiles_dir}/${profile}"
+  printf "Found profile: %s\n" "${profiles_dir}/${profile}"
+done
+
 ###############################################################################
 # Configure Development Environment                                           #
 ###############################################################################
 
 # Configure global git config
-git config --global user.email "49494600+yuzhoumo@users.noreply.github.com"
-git config --global user.name "Joe Mo"
+# git config --global user.email "49494600+yuzhoumo@users.noreply.github.com"
+# git config --global user.name "Joe Mo"
+
+# Install python libraries
+# pip3 install notebook
+# pip3 install numpy
+# pip3 install scipy
+# pip3 install matplotlib
+# pip3 install seaborn
+# pip3 install pandas
+
+# Install and configure node
+
+# Setup SSH configuration
 
 # TODO: Setup Code folder and pull git repositories
