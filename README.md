@@ -10,7 +10,7 @@ My dotfiles are pulled from a separate repository hosted
 This will run automated setup and also guide the user through manual steps.
 
 ```
-mkdir ~/Desktop/macos-configs && cd macos-configs; curl -#L https://github.com/yuzhoumo/macos-configs/tarball/autorun | tar -xzv --strip-components 1 --exclude={README.md,LICENSE} && ./run/run.sh
+mkdir ~/Desktop/macos-configs && cd ~/Desktop/macos-configs && curl -#L https://github.com/yuzhoumo/macos-configs/tarball/autorun --silent | tar -xzv --strip-components 1 --exclude={README.md,LICENSE} && ./run/run.sh
 ```
 
 ## Documentation
