@@ -16,7 +16,7 @@ command -v brew >/dev/null 2>&1 || /bin/bash -c \
   "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install tmux if not already installed
-command -v tmux >/dev/null 2>&1 || brew install pueue || exit
+command -v tmux >/dev/null 2>&1 || brew install tmux || exit
 
 printf "\nLaunching split window...\n"
 
