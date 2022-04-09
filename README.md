@@ -1,11 +1,21 @@
 # macOS Configurations
 
 The goal of this project is to configure a fresh install of macOS as fast as
-possible. Manual setup steps for tasks that cannot be automated are listed
-in this README. My dotfiles are pulled from a separate repository hosted
+possible. Scripts can be run individually or all together via `run/run.sh`. 
+My dotfiles are pulled from a separate repository hosted
 [here](https://github.com/yuzhoumo/dotfiles).
 
-## Scripts
+## One-line interactive install
+
+This will run automated setup and also guide the user through manual steps.
+
+```
+mkdir ~/Desktop/macos-configs && cd macos-configs; curl -#L https://github.com/yuzhoumo/macos-configs/tarball/autorun | tar -xzv --strip-components 1 --exclude={README.md,LICENSE} && ./run/run.sh
+```
+
+## Documentation
+
+### Scripts
 
 Run scripts in the following order:
 
@@ -15,7 +25,7 @@ Run scripts in the following order:
 * `dock.sh`: Set application shortcuts in the Dock
 * `post.sh`: Set various tweaks after environment is setup
 
-## Manually configured settings
+### Manually configured settings
 
 Could not find a way to automate these settings.
 Some existing methods were broken since the Big Sur update.
@@ -30,7 +40,7 @@ Some existing methods were broken since the Big Sur update.
 * `Menu Bar > Finder > Preferences > Sidebar`: Uncheck "iCloud Drive", 
 "Cloud Storage", "Bonjour Computers"
 
-## Web browser configurations
+### Web browser configurations
 
 **Firefox**
 - Import user.js config from `assets/files`
