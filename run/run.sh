@@ -13,7 +13,8 @@ cd "$(dirname "${0}")" || exit
 
 # Install homebrew if not already installed
 command -v brew >/dev/null 2>&1 || /bin/bash -c \
-  "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+  osascript -e 'set volume output volume 50' && say "Homebrew installation completed"
 
 # Install tmux if not already installed
 command -v tmux >/dev/null 2>&1 || brew install tmux || exit
