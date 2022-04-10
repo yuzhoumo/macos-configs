@@ -3,7 +3,43 @@
 # Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
+casks=(
+  # High priority
+  bitwarden
+  firefox
+  eloston-chromium
+  synology-drive
+  signal
+  discord
+  slack
+  kitty
+  
+  # Medium priority
+  protonvpn
+  standard-notes
+  spotify
+  thunderbird
+  protonmail-bridge
+  ledger-live
+  zoom
+  figma
+
+  # Low priority
+  visual-studio-code
+  tor-browser
+  flux
+  lulu
+  vlc
+  deluge
+  imageoptim
+  insomnia
+  keka
+  libreoffice
+  android-platform-tools
+)
+
 cli=(
+  bash
   coreutils
   openssh
   ffmpeg
@@ -23,45 +59,12 @@ cli=(
   zopfli
 )
 
-casks=(
-  android-platform-tools
-  bitwarden
-  deluge
-  discord
-  eloston-chromium
-  figma
-  firefox
-  flux
-  imageoptim
-  insomnia
-  keka
-  kitty
-  ledger-live
-  libreoffice
-  lulu
-  obsidian
-  protonmail-bridge
-  protonvpn
-  signal
-  slack
-  spotify
-  standard-notes
-  synology-drive
-  thunderbird
-  tor-browser
-  visual-studio-code
-  vlc
-  zoom
-)
-
 pueue_group="brew_install"
 
 set -e # Exit if any command fails
 
 # Cleanup function
 finish() {
-  printf "Exiting...\n"
-
   if pueue >/dev/null 2>&1; then
     pueue reset
     pueue group | grep "${pueue_group}" > /dev/null &&
@@ -72,6 +75,7 @@ trap finish EXIT
 
 # Trigger exit on interrupt
 ctrlc() {
+  printf "Exiting...\n"
   exit
 }
 trap ctrlc INT
