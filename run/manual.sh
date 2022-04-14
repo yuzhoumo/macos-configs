@@ -7,14 +7,13 @@ prompt_continue() {
   printf "\n🚀 \x1b[32mPress ENTER to continue...\x1b[0m" && read
 }
 
-printf "\n\x1b[33mMANUAL SETUP\x1b[0m\n\n"
-
-# Setup full disk encryption
-printf "\n\x1b[33m### Enable full disk encryption via FileVault\x1b[0m\n\n"
-touch ~/Desktop/filevault-setup-output.txt
-sudo fdesetup enable >> ~/Desktop/filevault-setup-output.txt
-printf "Output was saved to the desktop!\n"
-prompt_continue
+# Setup full disk encryption if not already on
+[[ $(fdesetup status | grep "FileVault is Off.") ]] && \
+  printf "\n\x1b[33m### Enable full disk encryption via FileVault\x1b[0m\n\n" && \
+  touch ~/Desktop/filevault-setup-output.txt && \
+  sudo fdesetup enable >> ~/Desktop/filevault-setup-output.txt && \
+  printf "Output was saved to the desktop\!\n" && \
+  prompt_continue
 
 # Setup Spotlight
 printf "\n\x1b[33m### System Preferences > Spotlight > Search Results\x1b[0m\n\n"
