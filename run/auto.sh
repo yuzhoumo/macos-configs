@@ -3,8 +3,6 @@
 # Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
-printf "\n\x1b[33mAUTOMATED SETUP\x1b[0m\n\n"
-
 # Launch system settings automation
 printf "\n\x1b[33m### Apply automated system settings\x1b[0m\n\n"
 ../scripts/macos.sh
