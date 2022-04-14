@@ -78,25 +78,3 @@ for profile in $(ls "${profiles_dir}" | grep default); do
   cp ../assets/files/user.js "${profiles_dir}/${profile}"
   printf "Found profile: %s\n" "${profiles_dir}/${profile}"
 done
-
-###############################################################################
-# Configure Development Environment                                           #
-###############################################################################
-
-# Configure global git config
-# git config --global user.email "49494600+yuzhoumo@users.noreply.github.com"
-# git config --global user.name "Joe Mo"
-
-# Install python libraries
-# pip3 install notebook
-# pip3 install numpy
-# pip3 install scipy
-# pip3 install matplotlib
-# pip3 install seaborn
-# pip3 install pandas
-
-# Install and configure node
-
-# Setup SSH configuration
-
-# TODO: Setup Code folder and pull git repositories
