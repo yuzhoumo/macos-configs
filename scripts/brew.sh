@@ -13,7 +13,7 @@ casks=(
   discord
   slack
   kitty
-  
+
   # Medium priority
   protonvpn
   standard-notes
@@ -30,9 +30,9 @@ casks=(
   flux
   lulu
   vlc
+  rectangle
   deluge
   imageoptim
-  insomnia
   keka
   libreoffice
   android-platform-tools
@@ -40,7 +40,6 @@ casks=(
 
 cli=(
   bash
-  coreutils
   openssh
   ffmpeg
   gh
@@ -50,13 +49,10 @@ cli=(
   neovim
   nvm
   openjdk
-  p7zip
-  pigz
   tmux
   tree
   wget
   youtube-dl
-  zopfli
 )
 
 pueue_group="brew_install"
