@@ -250,6 +250,10 @@ user_pref("dom.battery.enabled", false);
 /* OTHER */
 /*********/
 
+/* Enable global privacy control */
+user_pref("privacy.globalprivacycontrol", true);
+user_pref("privacy.globalprivacycontrol.functionality.enabled", true);
+
 /* Disable JS in PDFs */
 user_pref("pdfjs.enableScripting", false);
 
