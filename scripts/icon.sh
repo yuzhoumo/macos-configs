@@ -8,7 +8,6 @@ apps=(
   "Firefox"
   "Flux"
   "ImageOptim"
-  "Insomnia"
   "Ledger Live"
   "LibreOffice"
   "LuLu"

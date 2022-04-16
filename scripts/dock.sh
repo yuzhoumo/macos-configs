@@ -20,10 +20,11 @@ apps=(
   "Calendar"
 )
 
-printf "Parsing launchservices dump for application paths...\n"
 launchservices_path="/System/Library/Frameworks/CoreServices.framework"
 launchservices_path+="/Versions/A/Frameworks/LaunchServices.framework"
 launchservices_path+="/Versions/A/Support/lsregister"
+
+printf "Parsing launchservices dump for application paths...\n"
 path_dump=$( "${launchservices_path}" -dump | grep -o "/.*\.app" | \
   grep -v -E "Backups|Caches|TimeMachine|Temporary|/Volumes/" | uniq | sort )
 

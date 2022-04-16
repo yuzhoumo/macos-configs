@@ -30,28 +30,34 @@ cd "$(dirname "${0}")" || exit
 # Personalization                                                             #
 ###############################################################################
 
+user_picture="../assets/images/profile.png"
+user_wallpaper="../assets/images/wallpaper.jpg"
+ff_profiles_dir="${HOME}/Library/Application Support/Firefox/Profiles"
+
 # Set desktop wallpaper
 printf 'Setting desktop wallpaper...\n'
-cp ../assets/images/wallpaper.jpg "${HOME}"/Pictures/wallpaper.jpg
+cp "${user_wallpaper}" "${HOME}"/Pictures/wallpaper.jpg
 osascript -e "tell application \"Finder\" to set desktop picture to \
   \"${HOME}/Pictures/wallpaper.jpg\" as POSIX file"
 
 # Set profile picture
 # https://apple.stackexchange.com/questions/117530#367667
-printf 'Setting user profile picture...\n'
-cp ../assets/images/profile.png "${HOME}/Pictures/profile.png"
+{
+  printf 'Setting user profile picture...\n'
+  cp "${user_picture}" "${HOME}/Pictures/profile.png"
 
-# Delete old profile picture
-dscl . delete "${HOME}" JPEGPhoto && dscl . delete "${HOME}" Picture
+  # Delete old profile picture
+  dscl . delete "${HOME}" JPEGPhoto && dscl . delete "${HOME}" Picture
 
-attrs="dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName externalbinary:"
-attrs+="dsAttrTypeStandard:JPEGPhoto"
-mappings="0x0A 0x5C 0x3A 0x2C"
-tmpfile="dsimport.tmp"
+  attrs="dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName "
+  attrs+="externalbinary:dsAttrTypeStandard:JPEGPhoto"
+  mappings="0x0A 0x5C 0x3A 0x2C"
+  tmpfile="dsimport.tmp"
 
-printf "%s %s \n%s:%s" "${mappings}" "${attrs}" "${USERNAME}" \
-  "${HOME}/Pictures/profile.png" > "${tmpfile}"
-sudo /usr/bin/dsimport "${tmpfile}" /Local/Default M; rm "${tmpfile}"
+  printf "%s %s \n%s:%s" "${mappings}" "${attrs}" "${USERNAME}" \
+    "${HOME}/Pictures/profile.png" > "${tmpfile}"
+  sudo /usr/bin/dsimport "${tmpfile}" /Local/Default M; rm "${tmpfile}"
+}
 
 # Set default browser to Firefox
 printf 'Setting default browser...\n'
@@ -73,8 +79,7 @@ brew uninstall mysides
 
 # Copy Firefox user.js to all default profiles
 printf "Setting user.js file for default Firefox profiles...\n"
-profiles_dir="${HOME}/Library/Application Support/Firefox/Profiles" 
-for profile in $(ls "${profiles_dir}" | grep default); do
-  cp ../assets/files/user.js "${profiles_dir}/${profile}"
-  printf "Found profile: %s\n" "${profiles_dir}/${profile}"
+for profile in $(ls "${ff_profiles_dir}" | grep default); do
+  cp ../assets/files/user.js "${ff_profiles_dir}/${profile}"
+  printf "Found profile: %s\n" "${ff_profiles_dir}/${profile}"
 done
