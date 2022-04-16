@@ -20,6 +20,7 @@ mkdir ~/Desktop/macos-configs && cd ~/Desktop/macos-configs && curl -#L https://
 Run scripts in the following order:
 
 * `macos.sh`: Set various system settings
+* `font.sh`: Install fonts from assets directory
 * `brew.sh`: Install packages using Homebrew
 * `icon.sh`: Set custom icons for certain apps
 * `dock.sh`: Set application shortcuts in the Dock
