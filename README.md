@@ -5,11 +5,12 @@
 The goal of this project is to configure a fresh install of macOS as fast as
 possible. Scripts can be run individually or all together via `run/run.sh`. 
 My dotfiles are pulled from a separate repository hosted
-[here](https://github.com/yuzhoumo/dotfiles).
+[here](https://github.com/yuzhoumo/dotfiles). These scripts were designed
+with idempotency in mind and are can be re-run periodically.
 
 ## One-line interactive install
 
-This will run automated setup and also guide the user through manual steps.
+This will first run the automated setup, then guide the user through manual steps.
 
 ```
 mkdir ~/Desktop/macos-configs && cd ~/Desktop/macos-configs && curl -#L https://github.com/yuzhoumo/macos-configs/tarball/main --silent | tar -xzv --strip-components 1 --exclude={README.md,LICENSE} && ./run/run.sh
@@ -22,11 +23,12 @@ mkdir ~/Desktop/macos-configs && cd ~/Desktop/macos-configs && curl -#L https://
 Run scripts in the following order:
 
 * `macos.sh`: Set various system settings
-* `font.sh`: Install fonts from assets directory
-* `brew.sh`: Install packages using Homebrew
-* `icon.sh`: Set custom icons for certain apps
-* `dock.sh`: Set application shortcuts in the Dock
-* `post.sh`: Set various tweaks after environment is setup
+*  `font.sh`: Install fonts from assets directory
+*   `dot.sh`: Install dotfiles from [Github](https://github.com/yuzhoumo/dotfiles)
+*  `brew.sh`: Install packages using Homebrew
+*  `icon.sh`: Set custom icons for certain apps
+*  `dock.sh`: Set application shortcuts in the Dock
+*  `post.sh`: Set various tweaks after environment is setup
 
 ### Manually configured settings
 
@@ -83,3 +85,4 @@ Some existing methods were broken since the Big Sur update.
   * Check Show full website address
   * Set "Default encoding" to "Unicode (UTF-8)"
   * Check "Show Develop menu in menu bar"
+
