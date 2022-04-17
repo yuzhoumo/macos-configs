@@ -11,6 +11,10 @@ printf "\n\x1b[33m### Apply automated system settings\x1b[0m\n\n"
 printf "\n\x1b[33m### Install fonts\x1b[0m\n\n"
 ../scripts/font.sh
 
+# Launch dotfiles automation
+printf "\n\x1b[33m### Install dotfiles\x1b[0m\n\n"
+../scripts/dot.sh
+
 # Launch brew automation
 printf "\n\x1b[33m### Install packages from Homebrew\x1b[0m\n\n"
 ../scripts/brew.sh
