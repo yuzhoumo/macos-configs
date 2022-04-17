@@ -1,5 +1,7 @@
 # macOS Configurations
 
+![desktop screenshot](assets/images/screenshot.png)
+
 The goal of this project is to configure a fresh install of macOS as fast as
 possible. Scripts can be run individually or all together via `run/run.sh`. 
 My dotfiles are pulled from a separate repository hosted
