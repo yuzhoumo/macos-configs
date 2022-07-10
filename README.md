@@ -6,7 +6,7 @@ The goal of this project is to configure a fresh install of macOS as fast as
 possible. Scripts can be run individually or all together via `run/run.sh`. 
 My dotfiles are pulled from a separate repository hosted
 [here](https://github.com/yuzhoumo/dotfiles). These scripts were designed
-with idempotency in mind and are can be re-run periodically.
+with idempotency in mind and can be re-run periodically.
 
 ## One-line interactive install
 
@@ -28,7 +28,7 @@ Run scripts in the following order:
 *  `brew.sh`: Install packages using Homebrew
 *  `icon.sh`: Set custom icons for certain apps
 *  `dock.sh`: Set application shortcuts in the Dock
-*  `post.sh`: Set various tweaks after environment is setup
+*  `post.sh`: Set various tweaks after environment is set up
 
 ### Manually configured settings
 
