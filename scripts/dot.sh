@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 # Pull and install dotfiles from Github
 # Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
