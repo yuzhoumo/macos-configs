@@ -13,6 +13,7 @@ casks=(
   discord
   slack
   kitty
+  fluent-reader
 
   # Medium priority
   protonvpn
