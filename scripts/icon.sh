@@ -11,7 +11,7 @@ apps=(
   "Ledger Live"
   "LibreOffice"
   "LuLu"
-  "ProtonMail Bridge"
+  "Proton Mail Bridge"
   "ProtonVPN"
   "Spotify"
   "Synology Drive Client"
