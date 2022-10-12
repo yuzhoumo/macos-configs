@@ -9,7 +9,6 @@ apps=(
   "Flux"
   "ImageOptim"
   "Ledger Live"
-  "LibreOffice"
   "LuLu"
   "Proton Mail Bridge"
   "ProtonVPN"

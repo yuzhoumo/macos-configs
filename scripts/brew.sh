@@ -13,11 +13,10 @@ casks=(
   discord
   slack
   kitty
-  fluent-reader
+  obsidian
 
   # Medium priority
   protonvpn
-  standard-notes
   spotify
   thunderbird
   protonmail-bridge

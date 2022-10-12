@@ -6,9 +6,9 @@
 apps=(
   "System Preferences"
   "Bitwarden"
-  "Standard Notes"
-  "Fluent Reader"
+  "Obsidian"
   "Signal"
+  "Messages"
   "Discord"
   "Slack"
   "Chromium"
