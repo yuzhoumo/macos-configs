@@ -14,9 +14,9 @@ casks=(
   slack
   kitty
   obsidian
+  protonvpn
 
   # Medium priority
-  protonvpn
   spotify
   thunderbird
   protonmail-bridge
