@@ -173,11 +173,11 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "anonymous"
-sudo scutil --set HostName "anonymous"
-sudo scutil --set LocalHostName "anonymous"
+sudo scutil --set ComputerName "spinner"
+sudo scutil --set HostName "spinner"
+sudo scutil --set LocalHostName "spinner"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server \
-  NetBIOSName -string "anonymous"
+  NetBIOSName -string "spinner"
 
 # Show battery percentage in menu bar
 defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist \

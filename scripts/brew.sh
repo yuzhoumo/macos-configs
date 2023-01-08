@@ -16,6 +16,7 @@ casks=(
   obsidian
 
   # Medium priority
+  tailscale
   protonvpn
   spotify
   thunderbird
