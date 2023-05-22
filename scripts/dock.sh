@@ -15,7 +15,6 @@ apps=(
   "Firefox"
   "Tor Browser"
   "Thunderbird"
-  "Visual Studio Code"
   "Spotify"
   "kitty"
   "Calendar"
@@ -32,7 +31,7 @@ path_dump=$( "${launchservices_path}" -dump | grep -o "/.*\.app" | \
 # Remove all persistent icons from macOS Dock
 defaults write com.apple.dock persistent-apps -array
 
-for app_name in "${apps[@]}"; do 
+for app_name in "${apps[@]}"; do
   # Adds an application to macOS Dock
   app_path=$(printf "${path_dump}" | grep "${app_name}.app" | head -n1)
 

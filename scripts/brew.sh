@@ -3,57 +3,50 @@
 # Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
-casks=(
-  # High priority
-  bitwarden
-  firefox
-  eloston-chromium
-  synology-drive
-  signal
-  discord
-  slack
+casks=( # Roughly ordered by priority
   kitty
+  flux
+  bitwarden
+  synology-drive
   obsidian
-
-  # Medium priority
-  tailscale
-  protonvpn
+  firefox
   spotify
+  signal
   thunderbird
   protonmail-bridge
+  protonvpn
   ledger-live
+  discord
+  slack
+  eloston-chromium
   zoom
-  figma
-
-  # Low priority
-  visual-studio-code
   tor-browser
-  flux
   lulu
-  vlc
   rectangle
-  deluge
-  imageoptim
+  vlc
   keka
+  imageoptim
   libreoffice
+  deluge
   android-platform-tools
 )
 
-cli=(
-  bash
-  openssh
-  ffmpeg
-  gh
+cli=( # Roughly ordered by priority/dependency
   git
-  gnupg
-  htop
+  openssh
   neovim
+  bash
+  gnupg
+  bat
+  btop
+  tree
+  tmux
+  nmap
   nvm
   openjdk
-  tmux
-  tree
   wget
-  youtube-dl
+  ffmpeg
+  yt-dlp
 )
 
 pueue_group="brew_install"
