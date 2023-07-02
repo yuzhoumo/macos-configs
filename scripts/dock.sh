@@ -14,7 +14,6 @@ apps=(
   "Chromium"
   "Firefox"
   "Tor Browser"
-  "Thunderbird"
   "Spotify"
   "kitty"
   "Calendar"

@@ -12,8 +12,6 @@ casks=( # Roughly ordered by priority
   firefox
   spotify
   signal
-  thunderbird
-  protonmail-bridge
   protonvpn
   ledger-live
   discord
@@ -28,7 +26,6 @@ casks=( # Roughly ordered by priority
   imageoptim
   libreoffice
   deluge
-  android-platform-tools
 )
 
 cli=( # Roughly ordered by priority/dependency
@@ -42,7 +39,6 @@ cli=( # Roughly ordered by priority/dependency
   tree
   tmux
   nmap
-  nvm
   openjdk
   wget
   ffmpeg

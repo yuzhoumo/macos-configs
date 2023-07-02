@@ -10,7 +10,7 @@ apps=(
   "ImageOptim"
   "Ledger Live"
   "LuLu"
-  "Proton Mail Bridge"
+  "Obsidian"
   "ProtonVPN"
   "Spotify"
   "Synology Drive Client"
