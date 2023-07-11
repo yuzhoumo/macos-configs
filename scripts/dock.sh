@@ -11,10 +11,9 @@ apps=(
   "Messages"
   "Discord"
   "Slack"
-  "Chromium"
+  "Arc"
   "Firefox"
   "Tor Browser"
-  "Spotify"
   "kitty"
   "Calendar"
 )

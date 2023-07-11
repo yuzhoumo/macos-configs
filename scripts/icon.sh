@@ -12,7 +12,6 @@ apps=(
   "LuLu"
   "Obsidian"
   "ProtonVPN"
-  "Spotify"
   "Synology Drive Client"
   "Tor Browser"
   "VLC"

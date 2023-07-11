@@ -9,8 +9,8 @@ casks=( # Roughly ordered by priority
   bitwarden
   synology-drive
   obsidian
+  arc
   firefox
-  spotify
   signal
   protonvpn
   ledger-live
