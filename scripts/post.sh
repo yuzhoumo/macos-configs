@@ -63,13 +63,17 @@ osascript -e "tell application \"Finder\" to set desktop picture to \
 printf 'Setting default browser...\n'
 brew install defaultbrowser
 defaultbrowser firefox
-brew uninstall defaultbrowser 
+brew uninstall defaultbrowser
 
 # Set Finder favorites
 printf 'Setting favorites in Finder sidebar...\n'
 brew install mysides
 mysides remove Recents > /dev/null
 mysides remove Documents > /dev/null
+
+# Install Rosetta if on Apple Silicon (mysides is built for x86)
+[ "$(arch)" = 'arm64' ] && softwareupdate --install-rosetta --agree-to-license
+
 mysides add home file://"${HOME}" > /dev/null
 mysides add Desktop file://"${HOME}"/Desktop > /dev/null
 mysides add Downloads file://"${HOME}"/Downloads > /dev/null
