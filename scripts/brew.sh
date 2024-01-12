@@ -3,7 +3,7 @@
 # Author: Yuzhou "Joe" Mo (@yuzhoumo)
 # License: GNU GPLv3
 
-casks=( # Roughly ordered by priority
+casks=(
   kitty
   flux
   bitwarden
@@ -15,9 +15,6 @@ casks=( # Roughly ordered by priority
   protonvpn
   ledger-live
   discord
-  slack
-  eloston-chromium
-  zoom
   tor-browser
   lulu
   rectangle
@@ -28,18 +25,17 @@ casks=( # Roughly ordered by priority
   deluge
 )
 
-cli=( # Roughly ordered by priority/dependency
+cli=(
   git
   openssh
   neovim
   bash
   gnupg
+  htop
   bat
-  btop
   tree
   tmux
   nmap
-  openjdk
   wget
   ffmpeg
   yt-dlp
@@ -62,6 +58,7 @@ trap finish EXIT
 # Trigger exit on interrupt
 ctrlc() {
   printf "Exiting...\n"
+  finish()
   exit
 }
 trap ctrlc INT
@@ -76,10 +73,12 @@ while true; do sudo --non-interactive true; sleep 60; kill -0 "$$" || exit; done
 command -v brew >/dev/null 2>&1 || /bin/bash -c \
   "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Add brew to path in case it isn't already
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Pre-install tasks
 brew analytics off
-printf "Tapping homebrew/cask-drivers...\n"
-brew tap homebrew/cask-drivers # Needed for synology-drive
+
 printf "Upgrading any already-installed formulae...\n"
 brew upgrade
 
@@ -99,7 +98,7 @@ cli_flag=0; cask_flag=0
 # Setup pueue group for install tasks
 pueue group add "${pueue_group}"
 
-# Parallelize 4 processes at once
+# Parallelize 4 install processes at a time
 pueue parallel 4 --group "${pueue_group}"
 
 printf "Installing casks...\n"
