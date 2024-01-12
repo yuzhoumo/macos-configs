@@ -11,11 +11,10 @@ apps=(
   "Ledger Live"
   "LuLu"
   "Obsidian"
-  "ProtonVPN"
+  "Spotify"
   "Synology Drive Client"
   "Tor Browser"
   "VLC"
-  "zoom.us"
 )
 
 # Ask for the administrator password upfront

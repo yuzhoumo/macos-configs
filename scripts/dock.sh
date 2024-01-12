@@ -10,6 +10,7 @@ apps=(
   "Signal"
   "Messages"
   "Discord"
+  "Spotify"
   "Arc"
   "Firefox"
   "Tor Browser"

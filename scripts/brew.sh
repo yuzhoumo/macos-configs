@@ -15,6 +15,7 @@ casks=(
   protonvpn
   ledger-live
   discord
+  spotify
   tor-browser
   lulu
   rectangle
@@ -58,7 +59,6 @@ trap finish EXIT
 # Trigger exit on interrupt
 ctrlc() {
   printf "Exiting...\n"
-  finish()
   exit
 }
 trap ctrlc INT
