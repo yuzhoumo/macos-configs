@@ -4,13 +4,12 @@
 # License: GNU GPLv3
 
 apps=(
-  "System Preferences"
+  "System Settings"
   "Bitwarden"
   "Obsidian"
   "Signal"
   "Messages"
   "Discord"
-  "Slack"
   "Arc"
   "Firefox"
   "Tor Browser"

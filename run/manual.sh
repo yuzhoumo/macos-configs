@@ -16,38 +16,38 @@ prompt_continue() {
   prompt_continue
 
 # Setup Spotlight
-printf "\n\x1b[33m### System Preferences > Spotlight > Search Results\x1b[0m\n\n"
+printf "\n\x1b[33m### System Settings > Spotlight > Search Results\x1b[0m\n\n"
 open /System/Library/PreferencePanes/Spotlight.prefPane
 printf "Check the following options:\n\n"
-printf "* Applications\n* Folders\n* Fonts\n* PDF Documents\n* System Preferences\n"
+printf "* Applications\n* Folders\n* Fonts\n* PDF Documents\n* System Settings\n"
 prompt_continue
 
 # Setup Security & Privacy
-printf "\n\x1b[33m### System Preferences > Security & Privacy > Privacy\x1b[0m\n\n"
+printf "\n\x1b[33m### System Settings > Security & Privacy > Privacy\x1b[0m\n\n"
 open /System/Library/PreferencePanes/Security.prefPane
 printf "Setup privacy settings as needed\n"
 prompt_continue
 
 # Setup Extensions
-printf "\n\x1b[33m### System Preferences > Extensions\x1b[0m\n\n"
+printf "\n\x1b[33m### System Settings > Extensions\x1b[0m\n\n"
 open /System/Library/PreferencePanes/Extensions.prefPane
 printf "Uncheck unecessary extensions\n"
 prompt_continue
 
 # Setup General
-printf "\n\x1b[33m### System Preferences > General\x1b[0m\n\n"
+printf "\n\x1b[33m### System Settings > General\x1b[0m\n\n"
 open /System/Library/PreferencePanes/Appearance.prefPane
 printf "Set \"Recent Items\" to \"none\"\n"
 prompt_continue
 
 # Reduce Transparency
-printf "\n\x1b[33m### System Preferences > Accessibility > Display\x1b[0m\n\n"
+printf "\n\x1b[33m### System Settings > Accessibility > Display\x1b[0m\n\n"
 open /System/Library/PreferencePanes/UniversalAccessPref.prefPane
 printf "Check \"Reduce Transparency\"\n"
 prompt_continue
 
-# Close System Preferences
-osascript -e 'tell application "System Preferences" to quit'
+# Close System Settings
+osascript -e 'tell application "System Settings" to quit'
 
 # Finder sidebar
 printf "\n\x1b[33m### Menu Bar > Finder > Preferences > Sidebar\x1b[0m\n\n"

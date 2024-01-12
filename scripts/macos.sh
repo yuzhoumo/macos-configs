@@ -379,69 +379,69 @@ defaults write com.apple.Safari ShowPrivacyReportInFavorites -bool false
 defaults write com.apple.Safari ShowReadingListInFavorites -bool false
 
 # Do not always restore sessions at launch and do not restore private windows
-# (Preferences > General > Safari opens with > A new private window)
+# (Settings > General > Safari opens with > A new private window)
 defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool false
 defaults write com.apple.Safari ExcludePrivateWindowWhenRestoringSessionAtLaunch -bool true
 defaults write com.apple.Safari OpenPrivateWindowWhenNotRestoringSessionAtLaunch -bool true
 
 # Set Safari’s home page to `about:blank` for faster loading
-# (Preferences > General > Homepage > about:blank)
+# (Settings > General > Homepage > about:blank)
 defaults write com.apple.Safari HomePage -string "about:blank"
 
 # Set history to clear after one day
-# (Preferences > General > Remove history items > After one day)
+# (Settings > General > Remove history items > After one day)
 defaults write com.apple.Safari HistoryAgeInDaysLimit -int 1
 
 # Do not open "safe" files automatically after download
-# (Preferences > General > Open "safe" files after downloading)
+# (Settings > General > Open "safe" files after downloading)
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Disable autofill contacts, usernames/passwords, credit cards, and form data
-# (Preferences > AutoFill)
+# (Settings > AutoFill)
 defaults write com.apple.Safari AutoFillFromAddressBook -bool false
 defaults write com.apple.Safari AutoFillPasswords -bool false
 defaults write com.apple.Safari AutoFillCreditCardData -bool false
 defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
 # Set search engine to DuckDuckGo
-# (Preferences > Search > Search engine > DuckDuckGo)
+# (Settings > Search > Search engine > DuckDuckGo)
 defaults write com.apple.Safari SearchProviderShortName -string DuckDuckGo
 
 # Disable search engine suggestions
-# (Preferences > Search > Include search engine suggestions)
+# (Settings > Search > Include search engine suggestions)
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
 # Disable website-specific search
-# (Preferences > Search > Enable Quick Website Search)
+# (Settings > Search > Enable Quick Website Search)
 defaults write com.apple.Safari WebsiteSpecificSearchEnabled -bool false
 
 # Disable preloading
-# (Preferences > Search > Preload Top Hit in the background)
+# (Settings > Search > Preload Top Hit in the background)
 defaults write com.apple.Safari PreloadTopHit -bool false
 
 # Disable favorites in the search bar
-# (Preferences > Search > Show Favorites)
+# (Settings > Search > Show Favorites)
 defaults write com.apple.Safari ShowFavoritesUnderSmartSearchField -bool false
 
 # Disable safe search (sends data to Google Safe Browsing)
-# (Preferences > Security)
+# (Settings > Security)
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool false
 
 # Disable click tracking for ads
-# (Preferences > Privacy > Allow privacy-preserving measurement of ad effectiveness)
+# (Settings > Privacy > Allow privacy-preserving measurement of ad effectiveness)
 defaults write com.apple.Safari WebKitPreferences.privateClickMeasurementEnabled -bool false
 
 # Show the full URL in the address bar
-# (Preferences > Advanced > Show full website address)
+# (Settings > Advanced > Show full website address)
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
 # Set default encoding to UTF-8
-# (Preferences > Advanced > Default encoding > Unicode (UTF-8))
+# (Settings > Advanced > Default encoding > Unicode (UTF-8))
 defaults write com.apple.Safari WebKitDefaultTextEncodingName -string "utf-8"
 defaults write com.apple.Safari WebKitPreferences.defaultTextEncodingName -string "utf-8"
 
 # Show develop menubar option
-# (Preferences > Advanced > Show Develop menu in menu bar)
+# (Settings > Advanced > Show Develop menu in menu bar)
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari WebKitPreferences.developerExtrasEnabled -bool true
