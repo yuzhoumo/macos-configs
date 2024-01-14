@@ -15,11 +15,6 @@ prompt_continue() {
   printf "Output was saved to the desktop\!\n" && \
   prompt_continue
 
-# Setup SSH keys and GitHub
-[[ ! -d ~/.ssh ]]
-  && ssh-keygen -t ed25519
-  && gh auth login
-
 # Setup Spotlight
 printf "\n\x1b[33m### System Settings > Spotlight > Search Results\x1b[0m\n\n"
 open "x-apple.systempreferences:com.apple.Siri-Settings.extension"
@@ -63,5 +58,42 @@ prompt_continue
 
 # Close Finder window
 osascript -e 'tell application "Finder" to close windows'
+
+# Setup SSH keys and GitHub
+[[ ! -d ~/.ssh ]] && ssh-keygen -t ed25519
+
+# GitHub
+printf "\n\x1b[33m### Log in to GitHub CLI\x1b[0m\n\n"
+gh auth login
+
+# Bitwarden
+printf "\n\x1b[33m### Log in to Bitwarden\x1b[0m\n\n"
+open /Applications/Bitwarden.app
+prompt_continue
+
+# Spotify
+printf "\n\x1b[33m### Log in to Spotify\x1b[0m\n\n"
+open /Applications/Spotify.app
+prompt_continue
+
+# Firefox
+printf "\n\x1b[33m### Log in to Firefox\x1b[0m\n\n"
+open /Applications/Firefox.app
+prompt_continue
+
+# Discord
+printf "\n\x1b[33m### Log in to Discord\x1b[0m\n\n"
+open /Applications/Discord.app
+prompt_continue
+
+# Signal
+printf "\n\x1b[33m### Log in to Signal\x1b[0m\n\n"
+open /Applications/Signal.app
+prompt_continue
+
+# Synology Drive Client
+printf "\n\x1b[33m### Log in to Synology Drive\x1b[0m\n\n"
+open /Applications/Synology\ Drive\ Client.app
+prompt_continue
 
 printf "\n\x1b[32mDone with manual setup.\x1b[0m\n\n"
