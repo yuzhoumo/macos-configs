@@ -27,8 +27,11 @@ casks=(
 )
 
 cli=(
+  gh
+  go
   git
   openssh
+  findutils
   neovim
   bash
   gnupg

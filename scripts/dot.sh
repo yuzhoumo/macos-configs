@@ -13,7 +13,7 @@ ssh_url="git@github.com:${github_username}/${dotfiles_repo}.git"
 
 printf "Installing dotfiles...\n"
 
-mkdir -p "${code_directory}/joe" && cd "${code_directory}/joe"
+mkdir -p "${code_directory}/${github_username}" && cd "${code_directory}/${github_username}"
 
 # Use http to clone to avoid authentication, then set origin to ssh
 [ -d "${dotfiles_repo}" ] || git clone "${http_url}"

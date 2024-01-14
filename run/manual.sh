@@ -15,34 +15,39 @@ prompt_continue() {
   printf "Output was saved to the desktop\!\n" && \
   prompt_continue
 
+# Setup SSH keys and GitHub
+[[ ! -d ~/.ssh ]]
+  && ssh-keygen -t ed25519
+  && gh auth login
+
 # Setup Spotlight
 printf "\n\x1b[33m### System Settings > Spotlight > Search Results\x1b[0m\n\n"
-open /System/Library/PreferencePanes/Spotlight.prefPane
+open "x-apple.systempreferences:com.apple.Siri-Settings.extension"
 printf "Check the following options:\n\n"
 printf "* Applications\n* Folders\n* Fonts\n* PDF Documents\n* System Settings\n"
 prompt_continue
 
-# Setup Security & Privacy
-printf "\n\x1b[33m### System Settings > Security & Privacy > Privacy\x1b[0m\n\n"
-open /System/Library/PreferencePanes/Security.prefPane
-printf "Setup privacy settings as needed\n"
+# Setup full disk access for terminal
+printf "\n\x1b[33m### System Settings > Privacy & Security > Privacy > Full Disk Access\x1b[0m\n\n"
+open "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_AllFiles"
+printf "Enable full disk access for kitty\n"
 prompt_continue
 
 # Setup Extensions
-printf "\n\x1b[33m### System Settings > Extensions\x1b[0m\n\n"
-open /System/Library/PreferencePanes/Extensions.prefPane
+printf "\n\x1b[33m### System Settings > Privacy & Security > Other > Extensions\x1b[0m\n\n"
+open "x-apple.systempreferences:com.apple.ExtensionsPreferences"
 printf "Uncheck unecessary extensions\n"
 prompt_continue
 
 # Setup General
-printf "\n\x1b[33m### System Settings > General\x1b[0m\n\n"
-open /System/Library/PreferencePanes/Appearance.prefPane
-printf "Set \"Recent Items\" to \"none\"\n"
+printf "\n\x1b[33m### System Settings > Control Center\x1b[0m\n\n"
+open "x-apple.systempreferences:com.apple.ControlCenter-Settings.extension"
+printf "Set \"Recent documents, applications, and servers\" to \"None\"\n"
 prompt_continue
 
 # Reduce Transparency
 printf "\n\x1b[33m### System Settings > Accessibility > Display\x1b[0m\n\n"
-open /System/Library/PreferencePanes/UniversalAccessPref.prefPane
+open "x-apple.systempreferences:com.apple.preference.universalaccess?Seeing_Display"
 printf "Check \"Reduce Transparency\"\n"
 prompt_continue
 
@@ -50,7 +55,7 @@ prompt_continue
 osascript -e 'tell application "System Settings" to quit'
 
 # Finder sidebar
-printf "\n\x1b[33m### Menu Bar > Finder > Preferences > Sidebar\x1b[0m\n\n"
+printf "\n\x1b[33m### Menu Bar > Finder > Settings > Sidebar\x1b[0m\n\n"
 open /
 printf "Uncheck the following:\n\n"
 printf "* iCloud Drive\n* Cloud Storage\n* Bonjour Computers\n"

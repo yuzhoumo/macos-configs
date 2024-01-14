@@ -26,6 +26,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Navigate to current directory
 cd "$(dirname "${0}")" || exit
 
+# Add brew to path in case it isn't already
+export PATH="/opt/homebrew/bin:$PATH"
+
 ###############################################################################
 # Personalization                                                             #
 ###############################################################################
