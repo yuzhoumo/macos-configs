@@ -19,6 +19,7 @@ casks=(
   tor-browser
   lulu
   rectangle
+  copilot
   vlc
   keka
   imageoptim
@@ -53,8 +54,8 @@ set -e # Exit if any command fails
 finish() {
   if pueue >/dev/null 2>&1; then
     pueue reset
-    pueue group | grep "${pueue_group}" > /dev/null &&
-      pueue group remove "${pueue_group}"
+    pueue group | grep "${pueue_group}" > /dev/null \
+      && pueue group remove "${pueue_group}"
   fi
 }
 trap finish EXIT

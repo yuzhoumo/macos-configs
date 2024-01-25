@@ -62,9 +62,15 @@ osascript -e 'tell application "Finder" to close windows'
 # Setup SSH keys and GitHub
 [[ ! -d ~/.ssh ]] && ssh-keygen -t ed25519
 
-# GitHub
-printf "\n\x1b[33m### Log in to GitHub CLI\x1b[0m\n\n"
-gh auth login
+# GitHub cli auth
+[[ gh auth status 2>&1 | grep "not logged into" >/dev/null ]] && \
+  printf "\n\x1b[33m### Log in to GitHub CLI\x1b[0m\n\n" && \
+  gh auth login
+
+# Download obsidian notes
+[[ ! -d ~/Code/yuzhoumo/obsidian ]] && \
+  printf "\n\x1b[33m### Downloading obsidian notes\x1b[0m\n\n" && \
+  git clone git@github.com:yuzhoumo/obsidian.git ~/Code/yuzhoumo/obsidian
 
 # Bitwarden
 printf "\n\x1b[33m### Log in to Bitwarden\x1b[0m\n\n"
