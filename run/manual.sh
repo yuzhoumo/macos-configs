@@ -7,14 +7,6 @@ prompt_continue() {
   printf "\n🚀 \x1b[32mPress ENTER to continue...\x1b[0m" && read
 }
 
-# Setup full disk encryption if not already on
-[[ $(fdesetup status | grep "FileVault is Off.") ]] && \
-  printf "\n\x1b[33m### Enable full disk encryption via FileVault\x1b[0m\n\n" && \
-  touch ~/Desktop/filevault-setup-output.txt && \
-  sudo fdesetup enable >> ~/Desktop/filevault-setup-output.txt && \
-  printf "Output was saved to the desktop\!\n" && \
-  prompt_continue
-
 # Setup Spotlight
 printf "\n\x1b[33m### System Settings > Spotlight > Search Results\x1b[0m\n\n"
 open "x-apple.systempreferences:com.apple.Siri-Settings.extension"
@@ -74,26 +66,6 @@ prompt_continue
 # Spotify
 printf "\n\x1b[33m### Log in to Spotify\x1b[0m\n\n"
 open /Applications/Spotify.app
-prompt_continue
-
-# Firefox
-printf "\n\x1b[33m### Log in to Firefox\x1b[0m\n\n"
-open /Applications/Firefox.app
-prompt_continue
-
-# Discord
-printf "\n\x1b[33m### Log in to Discord\x1b[0m\n\n"
-open /Applications/Discord.app
-prompt_continue
-
-# Signal
-printf "\n\x1b[33m### Log in to Signal\x1b[0m\n\n"
-open /Applications/Signal.app
-prompt_continue
-
-# Synology Drive Client
-printf "\n\x1b[33m### Log in to Synology Drive\x1b[0m\n\n"
-open /Applications/Synology\ Drive\ Client.app
 prompt_continue
 
 printf "\n\x1b[32mDone with manual setup.\x1b[0m\n\n"

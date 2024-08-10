@@ -25,9 +25,6 @@ defaults write com.apple.AdLib personalizedAdsMigrated -bool false
 defaults write com.apple.AdLib allowIdentifierForAdvertising -bool false
 defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
 
-# Disable the crash reporter
-defaults write com.apple.CrashReporter DialogType -string "none"
-
 # Disable geocode suggestions
 defaults write com.apple.suggestions SuggestionsAllowGeocode -bool false
 
@@ -70,25 +67,6 @@ defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 
 # Hide Siri in menu bar
 defaults write com.apple.siri StatusMenuVisible -bool false
-
-# Enable firewall
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw \
-  --setglobalstate on > /dev/null
-
-# Enable stealth mode
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw \
-  --setstealthmode on > /dev/null
-
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-# Disable handoff between Mac and nearby iCloud devices
-defaults write \
-  ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd.plist \
-  ActivityAdvertisingAllowed -bool false
-
-# Disable Gatekeeper (annoying when trying to run downloaded programs)
-sudo spctl --master-disable
 
 ###############################################################################
 # Display & Power                                                             #
@@ -172,13 +150,6 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 # General Tweaks                                                              #
 ###############################################################################
 
-# Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "spinner"
-sudo scutil --set HostName "spinner"
-sudo scutil --set LocalHostName "spinner"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server \
-  NetBIOSName -string "spinner"
-
 # Show battery percentage in menu bar
 defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist \
   BatteryShowPercentage -bool true
@@ -197,19 +168,6 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-# Disable shadow in screenshots
-defaults write com.apple.screencapture disable-shadow -bool true
-
-# Disable the startup chime on boot
-sudo nvram StartupMute=%01
-
-# Avoid creating .DS_Store files on network or USB volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-# Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
 ###############################################################################
 # Finder                                                                      #

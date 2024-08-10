@@ -7,13 +7,8 @@ apps=(
   "System Settings"
   "Bitwarden"
   "Obsidian"
-  "Signal"
   "Messages"
-  "Discord"
   "Spotify"
-  "Arc"
-  "Firefox"
-  "Tor Browser"
   "kitty"
   "Calendar"
 )

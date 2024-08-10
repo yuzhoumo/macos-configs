@@ -7,23 +7,10 @@ casks=(
   kitty
   flux
   bitwarden
-  synology-drive
   obsidian
-  arc
-  firefox
-  signal
-  protonvpn
-  ledger-live
-  discord
   spotify
-  tor-browser
-  lulu
   rectangle
-  vlc
   keka
-  imageoptim
-  libreoffice
-  deluge
 )
 
 cli=(

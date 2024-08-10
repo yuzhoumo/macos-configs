@@ -4,17 +4,9 @@
 # License: GNU GPLv3
 
 apps=(
-  "Deluge"
-  "Firefox"
   "Flux"
-  "ImageOptim"
-  "Ledger Live"
-  "LuLu"
   "Obsidian"
   "Spotify"
-  "Synology Drive Client"
-  "Tor Browser"
-  "VLC"
 )
 
 # Ask for the administrator password upfront
