@@ -9,10 +9,12 @@ casks=(
   bitwarden
   synology-drive
   obsidian
-  arc
   firefox
   signal
   protonvpn
+  proton-drive
+  proton-pass
+  proton-mail
   ledger-live
   discord
   spotify
@@ -22,7 +24,7 @@ casks=(
   vlc
   keka
   imageoptim
-  libreoffice
+  onlyoffice
   deluge
 )
 

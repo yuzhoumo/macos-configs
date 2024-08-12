@@ -5,13 +5,13 @@
 
 apps=(
   "System Settings"
-  "Bitwarden"
+  "Proton Pass"
+  "Proton Mail"
   "Obsidian"
   "Signal"
   "Messages"
   "Discord"
   "Spotify"
-  "Arc"
   "Firefox"
   "Tor Browser"
   "kitty"
