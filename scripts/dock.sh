@@ -5,12 +5,10 @@
 
 apps=(
   "System Settings"
-  "Proton Pass"
   "Proton Mail"
   "Obsidian"
-  "Signal"
-  "Messages"
-  "Discord"
+  "Claude"
+  "Texts"
   "Spotify"
   "Firefox"
   "Tor Browser"

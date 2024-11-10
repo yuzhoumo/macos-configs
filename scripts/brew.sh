@@ -13,8 +13,9 @@ casks=(
   signal
   protonvpn
   proton-drive
-  proton-pass
   proton-mail
+  automattic-texts
+  claude
   ledger-live
   discord
   spotify
@@ -43,6 +44,8 @@ cli=(
   tmux
   nmap
   wget
+  jq
+  delve
   ffmpeg
   yt-dlp
 )
