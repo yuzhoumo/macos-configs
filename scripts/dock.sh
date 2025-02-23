@@ -7,12 +7,9 @@ apps=(
   "System Settings"
   "Proton Mail"
   "Obsidian"
-  "Claude"
-  "Texts"
   "Spotify"
   "Firefox"
-  "Tor Browser"
-  "kitty"
+  "Ghostty"
   "Calendar"
 )
 

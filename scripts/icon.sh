@@ -9,7 +9,6 @@ apps=(
   "Flux"
   "ImageOptim"
   "Ledger Live"
-  "LuLu"
   "Obsidian"
   "Spotify"
   "Synology Drive Client"

@@ -4,7 +4,7 @@
 # License: GNU GPLv3
 
 casks=(
-  kitty
+  ghostty
   flux
   bitwarden
   synology-drive
@@ -12,20 +12,14 @@ casks=(
   firefox
   signal
   protonvpn
-  proton-drive
   proton-mail
-  automattic-texts
-  claude
   ledger-live
-  discord
   spotify
   tor-browser
-  lulu
   rectangle
   vlc
   keka
   imageoptim
-  onlyoffice
   deluge
 )
 
@@ -45,7 +39,6 @@ cli=(
   nmap
   wget
   jq
-  delve
   ffmpeg
   yt-dlp
 )
