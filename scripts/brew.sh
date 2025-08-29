@@ -8,39 +8,28 @@ casks=(
   flux
   bitwarden
   synology-drive
-  obsidian
   firefox
   signal
   protonvpn
-  proton-mail
-  ledger-live
   spotify
   tor-browser
   rectangle
   vlc
   keka
   imageoptim
-  deluge
 )
 
 cli=(
-  gh
-  go
-  git
-  openssh
-  findutils
   neovim
-  bash
-  gnupg
-  htop
-  bat
-  tree
   tmux
-  nmap
+  findutils
+  gnupg
+  bash
+  go
+  uv
+  htop
+  tree
   wget
-  jq
-  ffmpeg
-  yt-dlp
 )
 
 pueue_group="brew_install"
